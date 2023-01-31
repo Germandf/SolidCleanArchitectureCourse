@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using SolidCleanArchitectureCourse.Application.Contracts.Persistence;
+using SolidCleanArchitectureCourse.Application.Exceptions;
 
 namespace SolidCleanArchitectureCourse.Application.Features.LeaveType.Commands.CreateLeaveType;
 
@@ -17,6 +18,14 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
 
     public async Task<int> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
     {
+        var validator = new CreateLeaveTypeCommandValidator(_leaveTypeRepository);
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+        if (validationResult.Errors.Any())
+        {
+            throw new BadRequestException("Invalid LeaveType", validationResult);
+        }
+
         var leaveTypeToCreate = _mapper.Map<Domain.LeaveType>(request);
         var leaveType = await _leaveTypeRepository.CreateAsync(leaveTypeToCreate);
         return leaveType.Id;
