@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using SolidCleanArchitectureCourse.Application.Features.Commands.CreateLeaveType;
-using SolidCleanArchitectureCourse.Application.Features.Commands.UpdateLeaveType;
-using SolidCleanArchitectureCourse.Application.Features.Queries.GetAllLeaveTypes;
-using SolidCleanArchitectureCourse.Application.Features.Queries.GetLeaveTypeDetails;
+using SolidCleanArchitectureCourse.Application.Features.LeaveType.Commands.CreateLeaveType;
+using SolidCleanArchitectureCourse.Application.Features.LeaveType.Commands.UpdateLeaveType;
+using SolidCleanArchitectureCourse.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
+using SolidCleanArchitectureCourse.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 using SolidCleanArchitectureCourse.Domain;
 
 namespace SolidCleanArchitectureCourse.Application.MappingProfiles;

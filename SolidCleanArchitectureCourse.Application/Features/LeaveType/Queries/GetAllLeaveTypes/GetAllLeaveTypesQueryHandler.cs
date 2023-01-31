@@ -2,7 +2,7 @@
 using MediatR;
 using SolidCleanArchitectureCourse.Application.Contracts.Persistence;
 
-namespace SolidCleanArchitectureCourse.Application.Features.Queries.GetAllLeaveTypes;
+namespace SolidCleanArchitectureCourse.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 
 public class GetAllLeaveTypesQueryHandler : IRequestHandler<GetAllLeaveTypesQuery, List<LeaveTypeDto>>
 {

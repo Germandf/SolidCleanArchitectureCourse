@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using SolidCleanArchitectureCourse.Application.Contracts.Persistence;
-using SolidCleanArchitectureCourse.Domain;
 
-namespace SolidCleanArchitectureCourse.Application.Features.Commands.UpdateLeaveType;
+namespace SolidCleanArchitectureCourse.Application.Features.LeaveType.Commands.UpdateLeaveType;
 
 public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeCommand, Unit>
 {
@@ -18,7 +17,7 @@ public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeComm
 
     public async Task<Unit> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
     {
-        var leaveTypeToUpdate = _mapper.Map<LeaveType>(request);
+        var leaveTypeToUpdate = _mapper.Map<Domain.LeaveType>(request);
         await _leaveTypeRepository.UpdateAsync(leaveTypeToUpdate);
         return Unit.Value;
     }

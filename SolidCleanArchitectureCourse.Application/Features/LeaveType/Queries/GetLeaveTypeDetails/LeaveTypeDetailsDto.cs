@@ -1,4 +1,4 @@
-﻿namespace SolidCleanArchitectureCourse.Application.Features.Queries.GetLeaveTypeDetails;
+﻿namespace SolidCleanArchitectureCourse.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 
 public class LeaveTypeDetailsDto
 {

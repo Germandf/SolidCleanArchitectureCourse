@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SolidCleanArchitectureCourse.Application.Contracts.Persistence;
 
-namespace SolidCleanArchitectureCourse.Application.Features.Commands.DeleteLeaveType;
+namespace SolidCleanArchitectureCourse.Application.Features.LeaveType.Commands.DeleteLeaveType;
 
 public class DeleteLeaveTypeCommandHandler : IRequestHandler<DeleteLeaveTypeCommand, Unit>
 {

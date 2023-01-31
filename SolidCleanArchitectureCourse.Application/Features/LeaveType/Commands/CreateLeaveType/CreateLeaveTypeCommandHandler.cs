@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using SolidCleanArchitectureCourse.Application.Contracts.Persistence;
-using SolidCleanArchitectureCourse.Domain;
 
-namespace SolidCleanArchitectureCourse.Application.Features.Commands.CreateLeaveType;
+namespace SolidCleanArchitectureCourse.Application.Features.LeaveType.Commands.CreateLeaveType;
 
 public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeCommand, int>
 {
@@ -18,7 +17,7 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
 
     public async Task<int> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
     {
-        var leaveTypeToCreate = _mapper.Map<LeaveType>(request);
+        var leaveTypeToCreate = _mapper.Map<Domain.LeaveType>(request);
         var leaveType = await _leaveTypeRepository.CreateAsync(leaveTypeToCreate);
         return leaveType.Id;
     }
