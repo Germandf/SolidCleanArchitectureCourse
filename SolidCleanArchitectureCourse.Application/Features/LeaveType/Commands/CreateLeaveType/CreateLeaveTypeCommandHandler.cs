@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using SolidCleanArchitectureCourse.Application.Contracts.Logging;
 using SolidCleanArchitectureCourse.Application.Contracts.Persistence;
 using SolidCleanArchitectureCourse.Application.Exceptions;
 
@@ -9,11 +10,16 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
 {
     private readonly IMapper _mapper;
     private readonly ILeaveTypeRepository _leaveTypeRepository;
+    private readonly IAppLogger<CreateLeaveTypeCommandHandler> _logger;
 
-    public CreateLeaveTypeCommandHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
+    public CreateLeaveTypeCommandHandler(
+        IMapper mapper, 
+        ILeaveTypeRepository leaveTypeRepository, 
+        IAppLogger<CreateLeaveTypeCommandHandler> logger)
     {
         _mapper = mapper;
         _leaveTypeRepository = leaveTypeRepository;
+        _logger = logger;
     }
 
     public async Task<int> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
@@ -23,6 +29,7 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
 
         if (validationResult.Errors.Any())
         {
+            _logger.LogWarning("Validation errors in create request for {0}", nameof(Domain.LeaveType));
             throw new BadRequestException("Invalid LeaveType", validationResult);
         }
 
