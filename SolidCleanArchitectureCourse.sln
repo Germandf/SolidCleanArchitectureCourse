@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCours
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidCleanArchitectureCourse.Persistence", "SolidCleanArchitectureCourse.Persistence\SolidCleanArchitectureCourse.Persistence.csproj", "{696ED453-91F8-4097-AEF4-F1E87719AD80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidCleanArchitectureCourse.Infrastructure", "SolidCleanArchitectureCourse.Infrastructure\SolidCleanArchitectureCourse.Infrastructure.csproj", "{7C2E2150-84E2-4F6B-AA28-C91939A40991}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{696ED453-91F8-4097-AEF4-F1E87719AD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{696ED453-91F8-4097-AEF4-F1E87719AD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{696ED453-91F8-4097-AEF4-F1E87719AD80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C2E2150-84E2-4F6B-AA28-C91939A40991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2E2150-84E2-4F6B-AA28-C91939A40991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2E2150-84E2-4F6B-AA28-C91939A40991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2E2150-84E2-4F6B-AA28-C91939A40991}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{937095F4-DC15-4E62-8D0E-A82CA3C53480} = {5D3D0757-1CC6-4570-9315-25F3EF0EC5CE}
 		{F2DED8A5-9FD3-457B-BDE2-681599CC8C3C} = {5D3D0757-1CC6-4570-9315-25F3EF0EC5CE}
 		{696ED453-91F8-4097-AEF4-F1E87719AD80} = {24B5FB7C-C794-46A6-A384-99E09CF45611}
+		{7C2E2150-84E2-4F6B-AA28-C91939A40991} = {24B5FB7C-C794-46A6-A384-99E09CF45611}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75EE179D-5007-4338-A78E-CE52C683B164}
