@@ -26,8 +26,8 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
             throw new BadRequestException("Invalid LeaveType", validationResult);
         }
 
-        var leaveTypeToCreate = _mapper.Map<Domain.LeaveType>(request);
-        var leaveType = await _leaveTypeRepository.CreateAsync(leaveTypeToCreate);
+        var leaveType = _mapper.Map<Domain.LeaveType>(request);
+        await _leaveTypeRepository.CreateAsync(leaveType);
         return leaveType.Id;
     }
 }
