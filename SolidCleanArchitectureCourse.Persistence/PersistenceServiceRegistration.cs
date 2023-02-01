@@ -14,7 +14,7 @@ public static class PersistenceServiceRegistration
     {
         services.AddDbContext<DatabaseContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("DatabaseContextConnectionString"));
+            options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString"));
         });
 
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
