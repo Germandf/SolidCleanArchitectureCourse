@@ -10,11 +10,11 @@ namespace SolidCleanArchitectureCourse.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class LeaveTypeController : ControllerBase
+public class LeaveTypesController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public LeaveTypeController(IMediator mediator)
+    public LeaveTypesController(IMediator mediator)
     {
         _mediator = mediator;
     }
