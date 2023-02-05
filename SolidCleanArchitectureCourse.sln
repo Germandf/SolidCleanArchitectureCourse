@@ -25,11 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCours
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCourse.Api", "SolidCleanArchitectureCourse.Api\SolidCleanArchitectureCourse.Api.csproj", "{8199151F-06D4-4B45-B7D0-AA949337DCB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidCleanArchitectureCourse.UnitTests", "SolidCleanArchitectureCourse.UnitTests\SolidCleanArchitectureCourse.UnitTests.csproj", "{CB97819C-1E59-460C-9F9E-D15FC26EE38E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCourse.UnitTests", "SolidCleanArchitectureCourse.UnitTests\SolidCleanArchitectureCourse.UnitTests.csproj", "{CB97819C-1E59-460C-9F9E-D15FC26EE38E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidCleanArchitectureCrouse.IntegrationTests", "SolidCleanArchitectureCrouse.IntegrationTests\SolidCleanArchitectureCrouse.IntegrationTests.csproj", "{96B8BE0A-36B4-40D8-B6C7-7102F9FE0A92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCrouse.IntegrationTests", "SolidCleanArchitectureCrouse.IntegrationTests\SolidCleanArchitectureCrouse.IntegrationTests.csproj", "{96B8BE0A-36B4-40D8-B6C7-7102F9FE0A92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidCleanArchitectureCourse.BlazorUI", "SolidCleanArchitectureCourse.BlazorUI\SolidCleanArchitectureCourse.BlazorUI.csproj", "{648F3B37-6D9C-42FB-8AC1-5CB8132E53D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCourse.BlazorUI", "SolidCleanArchitectureCourse.BlazorUI\SolidCleanArchitectureCourse.BlazorUI.csproj", "{648F3B37-6D9C-42FB-8AC1-5CB8132E53D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
