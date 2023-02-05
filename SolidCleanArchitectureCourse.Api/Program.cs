@@ -1,3 +1,4 @@
+using SolidCleanArchitectureCourse.Api.Middlewares;
 using SolidCleanArchitectureCourse.Application;
 using SolidCleanArchitectureCourse.Infrastructure;
 using SolidCleanArchitectureCourse.Persistence;
@@ -13,6 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
