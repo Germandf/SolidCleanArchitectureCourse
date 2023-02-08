@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SolidCleanArchitectureCourse.Application.Exceptions;
 using SolidCleanArchitectureCourse.Application.Identity;
@@ -19,11 +20,11 @@ public class AuthService : IAuthService
     public AuthService(
         UserManager<ApplicationUser> userManager, 
         SignInManager<ApplicationUser> signInManager, 
-        JwtSettings jwtSettings)
+        IOptions<JwtSettings> jwtSettings)
     {
         _userManager = userManager;
         _signInManager = signInManager;
-        _jwtSettings = jwtSettings;
+        _jwtSettings = jwtSettings.Value;
     }
 
     public async Task<AuthResponse> Login(AuthRequest request)
