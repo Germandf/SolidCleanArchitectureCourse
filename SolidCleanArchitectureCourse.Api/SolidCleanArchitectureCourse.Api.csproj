@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SolidCleanArchitectureCourse.Application\SolidCleanArchitectureCourse.Application.csproj" />
+    <ProjectReference Include="..\SolidCleanArchitectureCourse.Identity\SolidCleanArchitectureCourse.Identity.csproj" />
     <ProjectReference Include="..\SolidCleanArchitectureCourse.Infrastructure\SolidCleanArchitectureCourse.Infrastructure.csproj" />
     <ProjectReference Include="..\SolidCleanArchitectureCourse.Persistence\SolidCleanArchitectureCourse.Persistence.csproj" />
   </ItemGroup>
