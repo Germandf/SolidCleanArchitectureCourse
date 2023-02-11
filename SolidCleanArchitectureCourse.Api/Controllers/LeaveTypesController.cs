@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SolidCleanArchitectureCourse.Application.Features.LeaveType.Commands.CreateLeaveType;
 using SolidCleanArchitectureCourse.Application.Features.LeaveType.Commands.DeleteLeaveType;
@@ -10,6 +11,7 @@ namespace SolidCleanArchitectureCourse.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class LeaveTypesController : ControllerBase
 {
     private readonly IMediator _mediator;

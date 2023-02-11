@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Blazored.LocalStorage;
 using SolidCleanArchitectureCourse.BlazorUI.Contracts;
 using SolidCleanArchitectureCourse.BlazorUI.Models.LeaveTypes;
 using SolidCleanArchitectureCourse.BlazorUI.Services.Base;
@@ -9,7 +10,7 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
 {
     private readonly IMapper _mapper;
 
-    public LeaveTypeService(IClient client, IMapper mapper) : base(client)
+    public LeaveTypeService(IClient client, ILocalStorageService localStorage, IMapper mapper) : base(client, localStorage)
     {
         _mapper = mapper;
     }
@@ -18,6 +19,7 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
     {
         try
         {
+            await AddBearerToken();
             var createLeaveTypeCommand = _mapper.Map<CreateLeaveTypeCommand>(leaveType);
             await _client.LeaveTypesPOSTAsync(createLeaveTypeCommand);
             return new Response<Guid>()
@@ -35,6 +37,7 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
     {
         try
         {
+            await AddBearerToken();
             await _client.LeaveTypesDELETEAsync(id);
             return new Response<Guid>()
             {
@@ -49,12 +52,14 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
 
     public async Task<LeaveTypeVm> GetLeaveTypeDetails(int id)
     {
+        await AddBearerToken();
         var leaveType = await _client.LeaveTypesGETAsync(id);
         return _mapper.Map<LeaveTypeVm>(leaveType);
     }
 
     public async Task<List<LeaveTypeVm>> GetLeaveTypes()
     {
+        await AddBearerToken();
         var leaveTypes = await _client.LeaveTypesAllAsync();
         return _mapper.Map<List<LeaveTypeVm>>(leaveTypes);
     }
@@ -63,6 +68,7 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
     {
         try
         {
+            await AddBearerToken();
             var updateLeaveTypeCommand = _mapper.Map<UpdateLeaveTypeCommand>(leaveType);
             await _client.LeaveTypesPUTAsync(updateLeaveTypeCommand);
             return new Response<Guid>()
