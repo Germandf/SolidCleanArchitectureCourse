@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCrous
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCourse.BlazorUI", "SolidCleanArchitectureCourse.BlazorUI\SolidCleanArchitectureCourse.BlazorUI.csproj", "{648F3B37-6D9C-42FB-8AC1-5CB8132E53D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidCleanArchitectureCourse.Identity", "SolidCleanArchitectureCourse.Identity\SolidCleanArchitectureCourse.Identity.csproj", "{E8913BE4-70C1-4017-AB48-4CBF146B4393}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidCleanArchitectureCourse.Identity", "SolidCleanArchitectureCourse.Identity\SolidCleanArchitectureCourse.Identity.csproj", "{E8913BE4-70C1-4017-AB48-4CBF146B4393}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
