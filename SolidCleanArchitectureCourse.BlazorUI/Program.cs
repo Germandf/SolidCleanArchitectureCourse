@@ -21,6 +21,7 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<JwtSecurityTokenHandler>();
 builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<ILeaveAllocationService, LeaveAllocationService>();
 builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
