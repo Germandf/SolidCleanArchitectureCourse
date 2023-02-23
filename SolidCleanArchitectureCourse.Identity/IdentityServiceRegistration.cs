@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using SolidCleanArchitectureCourse.Application.Identity;
+using SolidCleanArchitectureCourse.Application.Contracts.Identity;
 using SolidCleanArchitectureCourse.Application.Models.Identity;
 using SolidCleanArchitectureCourse.Identity.DatabaseContexts;
 using SolidCleanArchitectureCourse.Identity.Models;

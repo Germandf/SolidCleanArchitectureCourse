@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SolidCleanArchitectureCourse.Application.Identity;
+using SolidCleanArchitectureCourse.Application.Contracts.Identity;
 using SolidCleanArchitectureCourse.Application.Models.Identity;
 
 namespace SolidCleanArchitectureCourse.Api.Controllers;

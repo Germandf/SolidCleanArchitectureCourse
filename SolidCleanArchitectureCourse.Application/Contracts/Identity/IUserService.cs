@@ -1,6 +1,6 @@
 ﻿using SolidCleanArchitectureCourse.Application.Models.Identity;
 
-namespace SolidCleanArchitectureCourse.Application.Identity;
+namespace SolidCleanArchitectureCourse.Application.Contracts.Identity;
 
 public interface IUserService
 {

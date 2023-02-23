@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using SolidCleanArchitectureCourse.Application.Identity;
+using SolidCleanArchitectureCourse.Application.Contracts.Identity;
 using SolidCleanArchitectureCourse.Application.Models.Identity;
 using SolidCleanArchitectureCourse.Identity.Models;
 
