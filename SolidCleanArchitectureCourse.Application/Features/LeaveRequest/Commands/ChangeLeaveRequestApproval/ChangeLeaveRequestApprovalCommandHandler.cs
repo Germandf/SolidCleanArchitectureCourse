@@ -16,19 +16,22 @@ public class ChangeLeaveRequestApprovalCommandHandler : IRequestHandler<ChangeLe
     private readonly ILeaveTypeRepository _leaveTypeRepository;
     private readonly IEmailSender _emailSender;
     private readonly IAppLogger<ChangeLeaveRequestApprovalCommandHandler> _logger;
+    private readonly ILeaveAllocationRepository _leaveAllocationRepository;
 
     public ChangeLeaveRequestApprovalCommandHandler(
         IMapper mapper,
         ILeaveRequestRepository leaveRequestRepository,
         ILeaveTypeRepository leaveTypeRepository,
         IEmailSender emailSender,
-        IAppLogger<ChangeLeaveRequestApprovalCommandHandler> logger)
+        IAppLogger<ChangeLeaveRequestApprovalCommandHandler> logger,
+        ILeaveAllocationRepository leaveAllocationRepository)
     {
         _mapper = mapper;
         _leaveRequestRepository = leaveRequestRepository;
         _leaveTypeRepository = leaveTypeRepository;
         _emailSender = emailSender;
         _logger = logger;
+        _leaveAllocationRepository = leaveAllocationRepository;
     }
 
     public async Task<Unit> Handle(ChangeLeaveRequestApprovalCommand request, CancellationToken cancellationToken)
@@ -50,6 +53,17 @@ public class ChangeLeaveRequestApprovalCommandHandler : IRequestHandler<ChangeLe
 
         leaveRequest.Approved = request.Approved;
         await _leaveRequestRepository.UpdateAsync(leaveRequest);
+
+        if (request.Approved)
+        {
+            var daysRequested = (int)(leaveRequest.EndDate - leaveRequest.StartDate).TotalDays;
+
+            var leaveAllocation = await _leaveAllocationRepository.GetUserAllocations(
+                leaveRequest.RequestingEmployeeId, leaveRequest.LeaveTypeId);
+
+            leaveAllocation.NumberOfDays -= daysRequested;
+            await _leaveAllocationRepository.UpdateAsync(leaveAllocation);
+        }
 
         var email = new EmailMessage
         {

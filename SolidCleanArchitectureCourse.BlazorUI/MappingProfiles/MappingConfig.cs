@@ -33,5 +33,7 @@ public class MappingConfig : Profile
         CreateMap<LeaveAllocationDetailsDto, LeaveAllocationVm>().ReverseMap();
         CreateMap<CreateLeaveAllocationCommand, LeaveAllocationVm>().ReverseMap();
         CreateMap<UpdateLeaveAllocationCommand, LeaveAllocationVm>().ReverseMap();
+
+        CreateMap<EmployeeVm, Employee>().ReverseMap();
     }
 }

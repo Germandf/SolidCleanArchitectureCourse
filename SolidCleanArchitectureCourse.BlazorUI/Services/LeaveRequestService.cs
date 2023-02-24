@@ -70,7 +70,7 @@ public class LeaveRequestService : BaseHttpService, ILeaveRequestService
 
     public async Task<AdminLeaveRequestViewVm> GetAdminLeaveRequestList()
     {
-        var leaveRequests = await _client.LeaveRequestsAllAsync();
+        var leaveRequests = await _client.LeaveRequestsAllAsync(isLoggedInUser: false);
 
         var model = new AdminLeaveRequestViewVm
         {
@@ -91,7 +91,7 @@ public class LeaveRequestService : BaseHttpService, ILeaveRequestService
 
     public async Task<EmployeeLeaveRequestViewVm> GetUserLeaveRequests()
     {
-        var leaveRequests = await _client.LeaveRequestsAllAsync();
+        var leaveRequests = await _client.LeaveRequestsAllAsync(isLoggedInUser: true);
         var allocations = await _client.LeaveAllocationsAllAsync();
         var model = new EmployeeLeaveRequestViewVm
         {
