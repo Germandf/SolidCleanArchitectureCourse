@@ -1,18 +1,26 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using SolidCleanArchitectureCourse.Application.Contracts.Identity;
 using SolidCleanArchitectureCourse.Application.Models.Identity;
 using SolidCleanArchitectureCourse.Identity.Models;
+using System.Security.Claims;
 
 namespace SolidCleanArchitectureCourse.Identity.Services;
 
 public class UserService : IUserService
 {
     private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IHttpContextAccessor _contextAccessor;
 
-    public UserService(UserManager<ApplicationUser> userManager)
+    public UserService(
+        UserManager<ApplicationUser> userManager, 
+        IHttpContextAccessor contextAccessor)
     {
         _userManager = userManager;
+        _contextAccessor = contextAccessor;
     }
+
+    public string UserId { get => _contextAccessor.HttpContext?.User?.FindFirstValue("uid"); }
 
     public async Task<Employee> GetEmployee(string userId)
     {

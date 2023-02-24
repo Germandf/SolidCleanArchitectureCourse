@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using SolidCleanArchitectureCourse.BlazorUI.Contracts;
-using SolidCleanArchitectureCourse.BlazorUI.Models;
+using SolidCleanArchitectureCourse.BlazorUI.Models.Authentication;
 
 namespace SolidCleanArchitectureCourse.BlazorUI.Pages;
 

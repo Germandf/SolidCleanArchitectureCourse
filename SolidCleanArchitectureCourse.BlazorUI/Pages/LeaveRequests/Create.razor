@@ -1,0 +1,35 @@
+﻿@page "/leaverequests/create/"
+
+<h3>Apply for leave</h3>
+
+<EditForm Model="@_leaveRequest" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <InputDate class="form-control" id="startDate" @bind-Value="_leaveRequest.StartDate" />
+        <ValidationMessage For="@(() => _leaveRequest.StartDate)" />
+    </div>
+    <div class="form-group">
+        <label for="endDate">End Date</label>
+            <InputDate class="form-control" id="endDate" @bind-Value="_leaveRequest.EndDate" />
+        <ValidationMessage For="@(() => _leaveRequest.EndDate)" />
+    </div>
+    <div class="form-group">
+        <label for="leaveType">Leave Type</label>
+        <InputSelect class="form-control" id="leaveType" @bind-Value="_leaveRequest.LeaveTypeId">
+            <option>Select Leave Type</option>
+            @foreach (var leaveType in _leaveTypeVms)
+            {
+                <option value="@leaveType.Id">@leaveType.Name</option>
+            }
+            </InputSelect>
+        <ValidationMessage For="@(() => _leaveRequest.LeaveTypeId)" />
+    </div>
+    <div class="form-group">
+        <label for="comments">Comments</label>
+        <InputTextArea class="form-control" id="comments" @bind-Value="_leaveRequest.RequestComments" MaxLength="300" />
+        <ValidationMessage For="@(() => _leaveRequest.RequestComments)" />
+    </div>
+    <button class="btn btn-success" type="submit">Submit Request</button>
+</EditForm>
