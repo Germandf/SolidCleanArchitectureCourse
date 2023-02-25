@@ -1,4 +1,5 @@
-﻿using SolidCleanArchitectureCourse.Api.Models;
+﻿using Newtonsoft.Json;
+using SolidCleanArchitectureCourse.Api.Models;
 using SolidCleanArchitectureCourse.Application.Exceptions;
 using System.Net;
 
@@ -7,10 +8,12 @@ namespace SolidCleanArchitectureCourse.Api.Middlewares;
 public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
+    private readonly ILogger<ExceptionMiddleware> _logger;
 
-    public ExceptionMiddleware(RequestDelegate next)
+    public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
     {
         _next = next;
+        _logger = logger;
     }
 
     public async Task InvokeAsync(HttpContext httpContext)
@@ -63,6 +66,9 @@ public class ExceptionMiddleware
                 };
                 break;
         }
+
+        var logMessage = JsonConvert.SerializeObject(problem);
+        _logger.LogError(logMessage);
 
         httpContext.Response.StatusCode = (int)statusCode;
         await httpContext.Response.WriteAsJsonAsync(problem);

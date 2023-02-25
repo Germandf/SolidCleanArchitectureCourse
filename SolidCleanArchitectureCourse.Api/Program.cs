@@ -1,3 +1,4 @@
+using Serilog;
 using SolidCleanArchitectureCourse.Api.Middlewares;
 using SolidCleanArchitectureCourse.Application;
 using SolidCleanArchitectureCourse.Identity;
@@ -5,6 +6,10 @@ using SolidCleanArchitectureCourse.Infrastructure;
 using SolidCleanArchitectureCourse.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, loggerConfig) => loggerConfig
+    .WriteTo.Console()
+    .ReadFrom.Configuration(context.Configuration));
 
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
@@ -23,6 +28,7 @@ var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 app.UseCors("all");
 app.UseAuthentication();
