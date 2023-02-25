@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SolidCleanArchitectureCourse.Application.Contracts.Identity;
 using SolidCleanArchitectureCourse.Domain;
 using SolidCleanArchitectureCourse.Domain.Common;
 
@@ -6,10 +7,12 @@ namespace SolidCleanArchitectureCourse.Persistence.DatabaseContexts;
 
 public class DatabaseContext : DbContext
 {
-	public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
-	{
+    private readonly IUserService _userService;
 
-	}
+    public DatabaseContext(DbContextOptions<DatabaseContext> options, IUserService userService) : base(options)
+	{
+        _userService = userService;
+    }
 
     public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
     public DbSet<LeaveRequest> LeaveRequests { get; set; }
@@ -28,10 +31,12 @@ public class DatabaseContext : DbContext
             .Where(x => x.State == EntityState.Added || x.State == EntityState.Modified))
         {
             entry.Entity.DateModified = DateTime.Now;
+            entry.Entity.ModifiedBy = _userService.UserId;
 
             if (entry.State == EntityState.Added)
             {
                 entry.Entity.DateCreated = DateTime.Now;
+                entry.Entity.CreatedBy = _userService.UserId;
             }
         }
 
