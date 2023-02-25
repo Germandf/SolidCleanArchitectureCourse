@@ -1,3 +1,4 @@
+using Blazored.Toast.Services;
 using Microsoft.AspNetCore.Components;
 using SolidCleanArchitectureCourse.BlazorUI.Contracts;
 using SolidCleanArchitectureCourse.BlazorUI.Models.LeaveTypes;
@@ -8,10 +9,15 @@ public partial class Index
 {
     [Inject]
     public required NavigationManager NavigationManager { get; set; }
+
     [Inject]
     public required ILeaveAllocationService LeaveAllocationService { get; set; }
+
     [Inject]
     public required ILeaveTypeService LeaveTypeService { get; set; }
+
+    [Inject]
+    public required IToastService ToastService { get; set; }
 
     public List<LeaveTypeVm>? LeaveTypes { get; private set; }
     public string Message { get; set; } = "";
@@ -39,8 +45,11 @@ public partial class Index
     protected async void DeleteLeaveType(int id)
     {
         var response = await LeaveTypeService.DeleteLeaveType(id);
+
         if (response.Success)
         {
+            ToastService.ShowSuccess("Leave Type deleted Successfully");
+            LeaveTypes = await LeaveTypeService.GetLeaveTypes();
             StateHasChanged();
         }
         else

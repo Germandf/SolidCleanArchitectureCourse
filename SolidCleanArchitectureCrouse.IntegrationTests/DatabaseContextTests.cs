@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Moq;
 using Shouldly;
+using SolidCleanArchitectureCourse.Application.Contracts.Identity;
 using SolidCleanArchitectureCourse.Domain;
 using SolidCleanArchitectureCourse.Persistence.DatabaseContexts;
 
@@ -8,13 +10,19 @@ namespace SolidCleanArchitectureCrouse.IntegrationTests;
 public class DatabaseContextTests
 {
     private DatabaseContext _databaseContext;
+    private readonly string _userId;
+    private readonly Mock<IUserService> _userServiceMock;
 
     public DatabaseContextTests()
 	{
 		var dbOptions = new DbContextOptionsBuilder<DatabaseContext>()
 			.UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
 
-		_databaseContext = new DatabaseContext(dbOptions);
+        _userId = "00000000-0000-0000-0000-000000000000";
+        _userServiceMock = new Mock<IUserService>();
+        _userServiceMock.Setup(m => m.UserId).Returns(_userId);
+
+        _databaseContext = new DatabaseContext(dbOptions, _userServiceMock.Object);
 	}
 
 	[Fact]

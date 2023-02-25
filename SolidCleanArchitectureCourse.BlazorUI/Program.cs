@@ -1,4 +1,5 @@
 using Blazored.LocalStorage;
+using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -19,6 +20,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddTransient<JwtAuthorizationMessageHandler>();
 builder.Services.AddHttpClient<IClient, Client>(x => x.BaseAddress = new Uri("https://localhost:7220"))
     .AddHttpMessageHandler<JwtAuthorizationMessageHandler>();
+builder.Services.AddBlazoredToast();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<JwtSecurityTokenHandler>();
